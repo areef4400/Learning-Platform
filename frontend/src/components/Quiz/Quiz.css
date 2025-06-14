@@ -1,0 +1,96 @@
+/* Base container */
+.quiz-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #fdfdfd;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease;
+}
+
+/* Question box */
+.question-box {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f2f6ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.question-box:hover {
+  transform: scale(1.02);
+}
+
+/* Option styles */
+.option {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ebeff6;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+.option:hover {
+  background-color: #e8f0ff;
+  transform: translateX(5px);
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-btn:hover {
+  background-color: #357bd8;
+  transform: scale(1.05);
+}
+
+/* Score text */
+.result-text {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #2e7d32;
+  animation: popIn 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

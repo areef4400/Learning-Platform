@@ -1,0 +1,114 @@
+.nav-div {
+  width: 220px;
+  height: 100vh;
+  background: linear-gradient(145deg, #1c2733, #232f3e);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  padding: 20px 15px;
+  transition: left 0.4s ease-in-out, box-shadow 0.4s;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  opacity: 0;
+}
+
+.nav-div.open {
+  left: 0;
+  padding-top: 50px;
+  padding-left: 20px;
+  opacity: 1;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.nav-ul, .nav-right {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-right {
+  margin-top: auto;
+}
+
+.nav-ul li, .nav-right li {
+  width: 100%;
+}
+
+.nav-ul button, .nav-right button {
+  width: 100%;
+  padding: 12px 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.nav-ul button:hover,
+.nav-right button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(6px);
+}
+
+.nav-ul a, .nav-right a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 12px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-ul a:hover, .nav-right a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(6px);
+}
+
+.hamburger {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  background: #1c2733;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.hamburger:hover {
+  background-color: #2a3b4f;
+  transform: scale(1.05);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.body-blur::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+}

@@ -1,0 +1,173 @@
+.roadmap-container {
+  max-width: 1400px;
+  margin: 10px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: rgba(247, 241, 241, 0.536);
+  border-radius: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 900;
+  color: #222;
+  font-size: 2.3rem;
+}
+
+/* Each roadmap node with vertical line */
+.roadmap-node {
+  position: relative;
+  margin-left: 40px;
+  padding-left: 20px;
+  border-left: 2px solid #3a6ea5; /* nice steel blue */
+  margin-top: 15px;
+  
+}
+
+/* Horizontal connector line from parent to child */
+.roadmap-node::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 18px;
+  width: 12px;
+  height: 2px;
+  background-color: #3a6ea5;
+}
+
+/* Children container vertical line lighter */
+.roadmap-children {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #a8c0e4; /* lighter blue */
+  animation: fadeInSlide 0.4s ease forwards;
+  opacity: 0;
+  cursor: default;
+  
+}
+
+@keyframes fadeInSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}
+
+/* Styling the topic links */
+.topic-text {
+  display: inline-block;
+  font-weight: 600;
+  color: #041c49; /* dark blue */
+  text-decoration: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+/* Hover and focus styles */
+.topic-text:hover,
+.topic-text:focus {
+  color: #fff;
+  background-color: #1a3d7c; /* dark blue background on hover */
+  box-shadow: 0 0 8px rgba(26, 61, 124, 0.6);
+  outline: none;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* Focus visible ring */
+.topic-text:focus-visible {
+  outline: 3px solid #94b8ff;
+  outline-offset: 2px;
+}
+
+/* Small book icon before text */
+.topic-text::before {
+  content: "📘";
+  margin-right: 8px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+/* loading */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f4f6f8;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Animated circular spinner */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid #0078ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 20px;
+}
+
+/* Professional loading text */
+.loading-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 16px;
+  animation: fadeInText 1.2s ease-in-out forwards;
+  opacity: 0;
+}
+
+/* Optional: shimmer bar for realism */
+.loading-bar {
+  width: 160px;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to right, transparent, #ffffffaa, transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  100% { left: 100%; }
+}
+
