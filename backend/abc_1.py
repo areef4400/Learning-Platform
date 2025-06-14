@@ -34,5 +34,3 @@ if __name__ == "__main__":
     get_suggestions("give me brief explanation about "+prompt+"with all heading and atlest two paragrams content,examples for each heading")
 
 
-
-#AVAL on top
