@@ -1,5 +1,6 @@
 # 📘 Learning Platform
-Demo Video of Working : https://drive.google.com/file/d/1EwZtk8MyOaW4BdlX9e5OmUsHWheO4UjP/view?usp=sharing
+**Demo Video of Working** : https://drive.google.com/file/d/1EwZtk8MyOaW4BdlX9e5OmUsHWheO4UjP/view?usp=sharing
+
 A full-stack MERN-based learning platform designed to help engineering students access structured content, top educational websites, and curated YouTube videos — all within a single interactive interface.
 
 ---
