@@ -3,7 +3,7 @@ import json
 import re
 from groq import Groq
 
-client = Groq(api_key="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")
+client = Groq(api_key="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")
 
 def clean_json_string(raw_str):
     # Remove markdown code fences like ```json or ```

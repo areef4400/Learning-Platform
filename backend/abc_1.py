@@ -1,29 +1,27 @@
 import os
-from groq import Groq
-import json  
+import json
 import sys
-import os
+from groq import Groq
 
-# Initialize the Gorg client
+# ✅ Your Groq API key (for testing only; secure this in production)
+api_key = "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"
 
+# ✅ Initialize the Groq client
+client = Groq(api_key=api_key)
 
-client = Groq(api_key="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")
 def get_suggestions(prompt):
     try:
-        # Send the request to the Gorg API
         chat_completion = client.chat.completions.create(
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            model="llama-3.3-70b-versatile",
+            model="llama3-70b-8192",
         )
-        # Extract the AI response
         response_content = chat_completion.choices[0].message.content.strip()
-        print(json.dumps({ "response": response_content }))
-    
+        return { "response": response_content }
+
     except Exception as e:
-        # Handle and print errors
-        print(f"Error: {e}")
+        return { "error": str(e) }
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -31,6 +29,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     prompt = sys.argv[1]
-    get_suggestions("give me brief explanation about "+prompt+"with all heading and atlest two paragrams content,examples for each heading")
-
-
+    query = f"give me brief explanation about {prompt} with all heading and at least two paragraphs content, examples for each heading"
+    
+    result = get_suggestions(query)
+    print(json.dumps(result))  # ✅ Always output JSON

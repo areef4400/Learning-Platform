@@ -114,8 +114,15 @@ userRouter.get("/getContent",async(req,res)=>{
             console.error(`stderr: ${stderr}`);
         }
         const trimmed = stdout.trim();
-        JSON.parse(trimmed);
-        res.json({ result: trimmed });
+
+        try {
+          const parsed = JSON.parse(trimmed);
+          res.json({ result: parsed });
+        } catch (parseErr) {
+          console.error("JSON parse error:", parseErr.message);
+          console.error("Raw output:", trimmed);
+          res.status(500).json({ error: "Invalid JSON output from Python script", raw: trimmed });
+        }
     });
 })
 

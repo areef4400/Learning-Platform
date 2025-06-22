@@ -5,7 +5,7 @@ import json
 from groq import Groq
 
 # Initialize Groq client
-client = Groq(api_key="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")  # Replace with your actual API key
+client = Groq(api_key="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")  # Replace with your actual API key
 
 def get_education_websites(prompt):
     try:
