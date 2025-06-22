@@ -10,50 +10,51 @@ export function SearchResults() {
   const siteList = Array.isArray(websites) ? websites : websites?.result || [];
 
   function formatContent(content) {
-    const lines = content.split('\n');
-    const elements = [];
-    let listItems = [];
+      const lines = content.split('\n');
+      const elements = [];
+      let listItems = [];
 
-    function flushList() {
-      if (listItems.length > 0) {
-        elements.push(
-          <ul key={`ul-${elements.length}`} style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-            {listItems.map((item, idx) => (
-              <li key={idx} style={{ lineHeight: 1.6 }}>{item}</li>
-            ))}
-          </ul>
-        );
-        listItems = [];
+      function flushList() {
+        if (listItems.length > 0) {
+          elements.push(
+            <ul key={`ul-${elements.length}`} className="formatted-list">
+              {listItems.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          );
+          listItems = [];
+        }
       }
+
+      lines.forEach((line, i) => {
+        const trimmed = line.trim();
+
+        if (trimmed.startsWith('##') || trimmed.match(/^\*\*(.*?)\*\*$/)) {
+          flushList();
+          const cleanHeading = trimmed
+            .replace(/^##\s*/, '')
+            .replace(/^\*\*(.*?)\*\*$/, '$1'); // Remove **heading**
+          elements.push(
+            <h2 key={i} className="custom-heading">{cleanHeading}</h2>
+          );
+        } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          listItems.push(trimmed.slice(2));
+        } else if (trimmed === '') {
+          flushList();
+          elements.push(<br key={`br-${i}`} />);
+        } else {
+          flushList();
+          elements.push(
+            <p key={i} className="custom-paragraph">{trimmed}</p>
+          );
+        }
+      });
+
+      flushList();
+      return elements;
     }
 
-    lines.forEach((line, i) => {
-      if (line.trim().startsWith('##')) {
-        flushList();
-        elements.push(
-          <h2 key={i} style={{ fontWeight: 'bold', fontSize: '1.5rem', marginTop: '1rem' }}>
-            {line.trim().replace(/^##\s*/, '')}
-          </h2>
-        );
-      }
-      else if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
-        listItems.push(line.trim().slice(2));
-      } else if (line.trim() === '') {
-        flushList();
-        elements.push(<br key={`br-${i}`} />);
-      } else {
-        flushList();
-        elements.push(
-          <p key={i} style={{ whiteSpace: 'pre-wrap', margin: '0 0 1rem 0', lineHeight: 1.6 }}>
-            {line}
-          </p>
-        );
-      }
-    });
-
-    flushList();
-    return elements;
-  }
 
   function getYouTubeVideoId(url) {
     const regex = /(?:youtube\.com.*[?&]v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;

@@ -15,13 +15,13 @@ export function Roadmap() {
     setLoading(true);  // Start loading
     try {
       // Fetch content
-      const contentRes = await fetch(`http://localhost:3000/aval/cc/user/getContent?prompt=${encodeURIComponent(topicName+" in/of "+courseName)}`);
+      const contentRes = await fetch(`http://localhost:3000/aval/cc/user/getContent?prompt=${encodeURIComponent(topicName+" in "+courseName)}`);
       const contentData = await contentRes.json();
 
       // Parse content result safely
       let parsedResult = {};
       try {
-        parsedResult = JSON.parse(contentData.result);
+        parsedResult = contentData.result;
       } catch {
         parsedResult = { response: "No content available." };
       }

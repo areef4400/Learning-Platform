@@ -1,4 +1,4 @@
-/* Adjust overall layout to vertical stacking */
+/* Overall layout */
 .results-container {
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   color: #333;
 }
 
-/* Shared card styling for all sections */
+/* Section card style */
 .card-section {
   background: #fff;
   border-radius: 12px;
@@ -23,7 +23,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings */
+/* Section headings */
 .results-heading {
   font-size: 2.2rem;
   font-weight: 700;
@@ -33,34 +33,40 @@
   padding-bottom: 8px;
 }
 
-/* Formatted content inside .results-content */
-.results-content p {
-  line-height: 1.75;
+/* Dynamic content headings (parsed from prompt result) */
+.custom-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 28px 0 16px;
+  border-left: 6px solid #4a90e2;
+  padding-left: 12px;
+  background: linear-gradient(to right, #e8f1ff, transparent);
+  border-radius: 4px;
+  animation: slideFadeIn 0.6s ease forwards;
+}
+
+/* Dynamic paragraph styling */
+.custom-paragraph {
+  white-space: pre-wrap;
   margin-bottom: 1.4rem;
+  line-height: 1.75;
   font-size: 1.1rem;
   color: #444;
-  white-space: pre-wrap;
 }
 
-.results-content h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1a202c;
-  margin: 24px 0 12px;
-  border-bottom: 2px solid #4a90e2;
-  padding-bottom: 4px;
-}
-
-.results-content ul {
-  padding-left: 20px;
+/* List styles (for parsed list items) */
+.formatted-list {
+  padding-left: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.results-content li {
+.formatted-list li {
   margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
-/* YouTube thumbnails */
+/* YouTube thumbnail grid */
 .youtube-grid {
   display: flex;
   flex-wrap: wrap;
@@ -69,7 +75,6 @@
   justify-content: center;
 }
 
-/* Each Video Card */
 .youtube-box {
   width: 280px;
   background: #ffffff;
@@ -87,7 +92,6 @@
   box-shadow: 0 10px 20px rgba(74, 144, 226, 0.18);
 }
 
-/* Thumbnail Image */
 .youtube-box img {
   width: 100%;
   height: 220px;
@@ -95,7 +99,6 @@
   border-bottom: 1px solid #dfe4ea;
 }
 
-/* Link Section */
 .youtube-box a {
   padding: 14px 16px;
   font-size: 1.05rem;
@@ -123,7 +126,6 @@
 .youtube-box:hover a::after {
   transform: scale(1.15);
 }
-
 
 /* Website links */
 .link-list {
@@ -170,5 +172,16 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

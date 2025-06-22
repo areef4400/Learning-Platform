@@ -29,7 +29,7 @@ export function Search({placeholder}) {
                         },
                     });
                     const data = await response.json();
-                    const parsedResult = JSON.parse(data.result);
+                    const parsedResult = data.result;
 
 
                     const response1 = await fetch(`http://localhost:3000/aval/cc/user/getYoutubeVid?prompt=${encodeURIComponent(search)}`, {
